@@ -1,0 +1,59 @@
+<Slide style={{ width: '1280px', height: '720px', background: '#0B1521', padding: '60px' }}>
+  <Box style={{ marginBottom: 26 }}>
+    <Text style={{ fontSize: 34, fontWeight: 'bold', color: '#FFFFFF' }}>把项目下载到电脑</Text>
+    <Box style={{ width: 64, height: 3, background: '#63A7D4', marginTop: 14 }} />
+  </Box>
+  <Box style={{ height: 470, flexDirection: 'row', gap: 36 }}>
+    <Box style={{ flex: 1, justifyContent: 'center', gap: 22 }}>
+      <Box style={{ background: '#13263B', borderRadius: 14, padding: 24, gap: 14 }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 12 }}>
+          <Box style={{ width: 40, height: 40, borderRadius: 10, background: '#24428F', justifyContent: 'center', alignItems: 'center' }}>
+            <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#FFFFFF' }}>1</Text>
+          </Box>
+          <Text style={{ fontSize: 21, fontWeight: 'bold', color: '#FFFFFF' }}>先确认被加进仓库</Text>
+        </Box>
+        <Text style={{ fontSize: 18, color: '#E7E8E9', lineHeight: 1.6 }}>组长把你加为协作者后，你会收到邮件邀请，点接受。</Text>
+      </Box>
+      <Box style={{ background: '#13263B', borderRadius: 14, padding: 24, gap: 14 }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 12 }}>
+          <Box style={{ width: 40, height: 40, borderRadius: 10, background: '#24428F', justifyContent: 'center', alignItems: 'center' }}>
+            <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#FFFFFF' }}>2</Text>
+          </Box>
+          <Text style={{ fontSize: 21, fontWeight: 'bold', color: '#FFFFFF' }}>在空白处右键</Text>
+        </Box>
+        <Text style={{ fontSize: 18, color: '#E7E8E9', lineHeight: 1.6 }}>在桌面或任意文件夹空白处右键 → Git Bash Here。</Text>
+      </Box>
+      <Box style={{ background: '#13263B', borderRadius: 14, padding: 24, gap: 14 }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 12 }}>
+          <Box style={{ width: 40, height: 40, borderRadius: 10, background: '#24428F', justifyContent: 'center', alignItems: 'center' }}>
+            <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#FFFFFF' }}>3</Text>
+          </Box>
+          <Text style={{ fontSize: 21, fontWeight: 'bold', color: '#FFFFFF' }}>输入下载命令</Text>
+        </Box>
+        <Text style={{ fontSize: 18, color: '#E7E8E9', lineHeight: 1.6 }}>完成后多出一个 shiguang-market 文件夹，就是项目。</Text>
+      </Box>
+    </Box>
+    <Box style={{ width: 600, background: '#041133', borderRadius: 16, padding: 28, gap: 20, justifyContent: 'center', border: '1px solid #232C37' }}>
+      <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+        <FAIcon name='terminal' style={{ fill: '#63A7D4', width: 26, height: 26 }} />
+        <Text style={{ fontSize: 18, color: '#8FBCE4' }}>这一整行复制粘贴，回车</Text>
+      </Box>
+      <CodeBlock
+        code={`git clone https://github.com/
+lopezriley956-netizen/
+shiguang-market.git`}
+        language='bash'
+        width={540}
+        fontSize={16}
+        theme='github-dark'
+      />
+      <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 12, background: '#13263B', borderRadius: 10, padding: '14px 18px' }}>
+        <FAIcon name='check-circle' style={{ fill: '#5DCAA5', width: 24, height: 24 }} />
+        <Text style={{ fontSize: 17, color: '#E7E8E9', lineHeight: 1.5 }}>出现文件夹 = 成功，之后都在这个文件夹里操作</Text>
+      </Box>
+      <Text style={{ fontSize: 16, color: '#C9CCCE', lineHeight: 1.5 }}>
+        提示输密码时用组长给的 token，粘贴后屏幕不显示是正常的，直接回车。
+      </Text>
+    </Box>
+  </Box>
+</Slide>

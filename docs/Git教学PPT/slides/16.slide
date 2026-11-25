@@ -1,0 +1,42 @@
+<Slide style={{ width: '1280px', height: '720px', background: '#041133', padding: '60px', position: 'relative', overflow: 'hidden' }}>
+  <Box style={{ position: 'absolute', right: -60, top: -60, width: 340, height: 340, borderRadius: 170, background: '#3A5CBC', opacity: 0.2 }} />
+  <Box style={{ position: 'relative', height: '100%', flexDirection: 'row', gap: 48 }}>
+    <Box style={{ width: 560, justifyContent: 'center', gap: 24 }}>
+      <Text style={{ fontSize: 52, fontWeight: 'bold', color: '#FFFFFF', lineHeight: 1.2 }}>只记这<br />5 个命令</Text>
+      <Box style={{ width: 60, height: 5, background: '#63A7D4' }} />
+      <Text style={{ fontSize: 21, color: '#A9CFE7', lineHeight: 1.6 }}>
+        其他的忘了没关系<br />这五个背下来就够了
+      </Text>
+      <Box style={{ background: '#13263B', borderRadius: 12, padding: 22, gap: 10 }}>
+        <Text style={{ fontSize: 19, color: '#5DCAA5', fontWeight: 'bold' }}>两条纪律</Text>
+        <Text style={{ fontSize: 18, color: '#E7E8E9', lineHeight: 1.6 }}>开工先 pull，收工要 push。</Text>
+      </Box>
+    </Box>
+    <Box style={{ flex: 1, justifyContent: 'center' }}>
+      <Box style={{ background: '#0B1521', borderRadius: 16, padding: 34, border: '1px solid #232C37' }}>
+        <CodeBlock
+          code={`git pull                        # 开工下载
+git add .                       # 打包改动
+git commit -m "改了什么"         # 存档说明
+git push                        # 收工上传
+git status                      # 迷路时看状态`}
+          language='bash'
+          width={560}
+          fontSize={17}
+          theme='github-dark'
+        />
+      </Box>
+      <Box style={{ marginTop: 26, flexDirection: 'row', alignItems: 'flex-start', gap: 14 }}>
+        <FAIcon name='book' style={{ fill: '#63A7D4', width: 28, height: 28 }} />
+        <Box>
+          <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#FFFFFF' }}>详细步骤看手册</Text>
+          <Text style={{ fontSize: 17, color: '#A9CFE7', lineHeight: 1.6, marginTop: 4 }}>仓库里 docs/零基础Git协作手册.md，含每一步和常见报错</Text>
+        </Box>
+      </Box>
+    </Box>
+  </Box>
+  <Box style={{ position: 'absolute', bottom: 30, left: 60, flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+    <FAIcon name='code' style={{ fill: '#63A7D4', width: 18, height: 18 }} />
+    <Text style={{ fontSize: 15, color: '#8FBCE4' }}>拾光集市 · 一起把项目做起来</Text>
+  </Box>
+</Slide>

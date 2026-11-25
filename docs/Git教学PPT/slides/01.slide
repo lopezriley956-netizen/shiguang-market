@@ -1,0 +1,27 @@
+<Slide style={{ width: '1280px', height: '720px', background: '#0B1521', padding: '60px', position: 'relative', overflow: 'hidden' }}>
+  <Box style={{ position: 'absolute', top: 0, right: 0, width: 520, height: 720, background: '#13263B', opacity: 0.55 }} />
+  <Box style={{ position: 'absolute', top: 120, right: 70, width: 260, height: 260, borderRadius: 130, background: '#24428F', opacity: 0.22 }} />
+  <Box style={{ position: 'absolute', top: 300, right: 150, width: 150, height: 150, borderRadius: 75, background: '#4DA3FF', opacity: 0.16 }} />
+  <Box style={{ position: 'relative', height: '100%', flexDirection: 'column', justifyContent: 'center' }}>
+    <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 14, marginBottom: 28 }}>
+      <Box style={{ width: 40, height: 6, background: '#63A7D4' }} />
+      <Text style={{ fontSize: 18, color: '#63A7D4', letterSpacing: 3, fontWeight: 'bold' }}>拾光集市 · 小组培训</Text>
+    </Box>
+    <Text style={{ fontSize: 82, fontWeight: 'bold', color: '#FFFFFF', lineHeight: 1.12, maxWidth: 760 }}>
+      零基础<br />Git 安装与协作
+    </Text>
+    <Text style={{ fontSize: 26, color: '#A9CFE7', marginTop: 30, lineHeight: 1.5 }}>
+      从装软件到团队配合，全程照着做就行
+    </Text>
+    <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 24, marginTop: 56 }}>
+      <Box style={{ padding: '12px 22px', background: '#3A5CBC', borderRadius: 8 }}>
+        <Text style={{ fontSize: 18, color: '#FFFFFF', fontWeight: 'bold' }}>大一新生也能学会</Text>
+      </Box>
+      <Text style={{ fontSize: 17, color: '#C9CCCE' }}>预计用时：一次 30 分钟的集合演示</Text>
+    </Box>
+  </Box>
+  <Box style={{ position: 'absolute', bottom: 34, left: 60, flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+    <FAIcon name='code' style={{ fill: '#63A7D4', width: 20, height: 20 }} />
+    <Text style={{ fontSize: 15, color: '#8FBCE4' }}>Git 入门第一课</Text>
+  </Box>
+</Slide>

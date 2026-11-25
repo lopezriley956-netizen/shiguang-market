@@ -1,0 +1,45 @@
+<Slide style={{ width: '1280px', height: '720px', background: '#0B1521', padding: '60px' }}>
+  <Box style={{ marginBottom: 26 }}>
+    <Text style={{ fontSize: 34, fontWeight: 'bold', color: '#FFFFFF' }}>告诉 Git 你是谁</Text>
+    <Box style={{ width: 64, height: 3, background: '#63A7D4', marginTop: 14 }} />
+  </Box>
+  <Box style={{ height: 470, flexDirection: 'row', gap: 36 }}>
+    <Box style={{ width: 700, background: '#041133', borderRadius: 16, padding: 28, gap: 20, justifyContent: 'center', border: '1px solid #232C37' }}>
+      <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+        <FAIcon name='terminal' style={{ fill: '#63A7D4', width: 26, height: 26 }} />
+        <Text style={{ fontSize: 18, color: '#8FBCE4' }}>打开 Git Bash，输入这两行（只做一次）</Text>
+      </Box>
+      <CodeBlock
+        code={`git config --global user.name "张三"
+git config --global user.email "zhangsan@email.com"`}
+        language='bash'
+        width={636}
+        fontSize={18}
+        theme='github-dark'
+      />
+      <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 12, background: '#13263B', borderRadius: 10, padding: '14px 18px' }}>
+        <FAIcon name='edit' style={{ fill: '#5DCAA5', width: 22, height: 22 }} />
+        <Text style={{ fontSize: 17, color: '#E7E8E9', lineHeight: 1.5 }}>把「张三」和邮箱换成你自己的，别照抄</Text>
+      </Box>
+    </Box>
+    <Box style={{ flex: 1, justifyContent: 'center', gap: 26 }}>
+      <Box>
+        <Text style={{ fontSize: 23, fontWeight: 'bold', color: '#63A7D4', marginBottom: 10 }}>为什么要做？</Text>
+        <Text style={{ fontSize: 19, color: '#E7E8E9', lineHeight: 1.6 }}>
+          Git 要记录「谁改了什么」。不告诉它你是谁，后面存档会报错。
+        </Text>
+      </Box>
+      <Box>
+        <Text style={{ fontSize: 23, fontWeight: 'bold', color: '#5DCAA5', marginBottom: 10 }}>只做一次</Text>
+        <Text style={{ fontSize: 19, color: '#E7E8E9', lineHeight: 1.6 }}>
+          设置会记住，以后每台电脑第一次用时做一次就行。
+        </Text>
+      </Box>
+      <Box style={{ background: '#232C37', borderRadius: 10, padding: 18 }}>
+        <Text style={{ fontSize: 17, color: '#A9CFE7', lineHeight: 1.6 }}>
+          看到报错 <span style={{ color: '#F09595', fontWeight: 'bold' }}>Please tell me who you are</span> 就是漏了这步，补做即可。
+        </Text>
+      </Box>
+    </Box>
+  </Box>
+</Slide>

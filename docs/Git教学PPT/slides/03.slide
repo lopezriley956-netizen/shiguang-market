@@ -1,0 +1,43 @@
+<Slide style={{ width: '1280px', height: '720px', background: '#0B1521', padding: '60px' }}>
+  <Box style={{ marginBottom: 28 }}>
+    <Text style={{ fontSize: 34, fontWeight: 'bold', color: '#FFFFFF' }}>Git 到底是什么</Text>
+    <Box style={{ width: 64, height: 3, background: '#63A7D4', marginTop: 14 }} />
+  </Box>
+  <Box style={{ height: 470, flexDirection: 'row', gap: 44 }}>
+    <Box style={{ width: 620, background: '#13263B', borderRadius: 16, padding: 32, justifyContent: 'center', alignItems: 'center', gap: 22 }}>
+      <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+        <Box style={{ width: 122, height: 104, background: '#232C37', borderRadius: 12, justifyContent: 'center', alignItems: 'center', gap: 8 }}>
+          <FAIcon name='laptop' style={{ fill: '#8FBCE4', width: 36, height: 36 }} />
+          <Text style={{ fontSize: 15, color: '#E7E8E9' }}>你的电脑</Text>
+        </Box>
+        <Text style={{ fontSize: 14, color: '#8FBCE4', fontWeight: 'bold', width: 56, textAlign: 'center', lineHeight: 1.5 }}>↑push<br />↓pull</Text>
+        <Box style={{ width: 140, height: 116, background: '#3A5CBC', borderRadius: 12, justifyContent: 'center', alignItems: 'center', gap: 8 }}>
+          <FAIcon name='cloud' style={{ fill: '#FFFFFF', width: 40, height: 40 }} />
+          <Text style={{ fontSize: 15, color: '#FFFFFF', fontWeight: 'bold' }}>GitHub 网盘</Text>
+        </Box>
+        <Text style={{ fontSize: 14, color: '#8FBCE4', fontWeight: 'bold', width: 56, textAlign: 'center', lineHeight: 1.5 }}>↑push<br />↓pull</Text>
+        <Box style={{ width: 122, height: 104, background: '#232C37', borderRadius: 12, justifyContent: 'center', alignItems: 'center', gap: 8 }}>
+          <FAIcon name='laptop' style={{ fill: '#8FBCE4', width: 36, height: 36 }} />
+          <Text style={{ fontSize: 15, color: '#E7E8E9' }}>队友电脑</Text>
+        </Box>
+      </Box>
+      <Text style={{ fontSize: 17, color: '#A9CFE7', textAlign: 'center', lineHeight: 1.6 }}>
+        每个人电脑上都有完整一份，改好了就上传，开工前先下载
+      </Text>
+    </Box>
+    <Box style={{ flex: 1, justifyContent: 'center', gap: 26 }}>
+      <Box>
+        <Text style={{ fontSize: 24, fontWeight: 'bold', color: '#63A7D4', marginBottom: 8 }}>GitHub = 网盘</Text>
+        <Text style={{ fontSize: 19, color: '#E7E8E9', lineHeight: 1.6 }}>项目代码放在网上，全组共享同一份，谁都能下载。</Text>
+      </Box>
+      <Box>
+        <Text style={{ fontSize: 24, fontWeight: 'bold', color: '#63A7D4', marginBottom: 8 }}>Git = 同步软件</Text>
+        <Text style={{ fontSize: 19, color: '#E7E8E9', lineHeight: 1.6 }}>装在自己电脑上，负责把本地文件和网盘保持一致。</Text>
+      </Box>
+      <Box>
+        <Text style={{ fontSize: 24, fontWeight: 'bold', color: '#5DCAA5', marginBottom: 8 }}>最核心的两步</Text>
+        <Text style={{ fontSize: 19, color: '#E7E8E9', lineHeight: 1.6 }}>开工 pull 下载，收工 push 上传。改坏了还能回到历史版本。</Text>
+      </Box>
+    </Box>
+  </Box>
+</Slide>

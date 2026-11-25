@@ -1,0 +1,39 @@
+<Slide style={{ width: '1280px', height: '720px', background: '#0B1521', padding: '60px' }}>
+  <Box style={{ marginBottom: 26 }}>
+    <Text style={{ fontSize: 34, fontWeight: 'bold', color: '#FFFFFF' }}>三周学习路线</Text>
+    <Box style={{ width: 64, height: 3, background: '#63A7D4', marginTop: 14 }} />
+    <Text style={{ fontSize: 18, color: '#A9CFE7', marginTop: 12 }}>别急着写代码，先把工具玩熟</Text>
+  </Box>
+  <Box style={{ height: 260, flexDirection: 'row', alignItems: 'center', gap: 0 }}>
+    <Box style={{ flex: 1, background: '#13263B', borderRadius: 14, padding: 26, gap: 16, height: 230 }}>
+      <Text style={{ fontSize: 44, fontWeight: 'bold', color: '#63A7D4' }}>01</Text>
+      <Text style={{ fontSize: 24, fontWeight: 'bold', color: '#FFFFFF' }}>第 1 周 · 练手</Text>
+      <Text style={{ fontSize: 18, color: '#E7E8E9', lineHeight: 1.6 }}>只学 5 个命令，在签到文件接龙，把流程走顺。</Text>
+    </Box>
+    <Box style={{ width: 46, justifyContent: 'center', alignItems: 'center' }}>
+      <FAIcon name='chevron-right' style={{ fill: '#4DA3FF', width: 34, height: 34 }} />
+    </Box>
+    <Box style={{ flex: 1, background: '#13263B', borderRadius: 14, padding: 26, gap: 16, height: 230 }}>
+      <Text style={{ fontSize: 44, fontWeight: 'bold', color: '#63A7D4' }}>02</Text>
+      <Text style={{ fontSize: 24, fontWeight: 'bold', color: '#FFFFFF' }}>第 2 周 · 分工</Text>
+      <Text style={{ fontSize: 18, color: '#E7E8E9', lineHeight: 1.6 }}>一人只改自己的文件，反复练 pull 和 push。</Text>
+    </Box>
+    <Box style={{ width: 46, justifyContent: 'center', alignItems: 'center' }}>
+      <FAIcon name='chevron-right' style={{ fill: '#4DA3FF', width: 34, height: 34 }} />
+    </Box>
+    <Box style={{ flex: 1, background: '#3A5CBC', borderRadius: 14, padding: 26, gap: 16, height: 230 }}>
+      <Text style={{ fontSize: 44, fontWeight: 'bold', color: '#FFFFFF' }}>03</Text>
+      <Text style={{ fontSize: 24, fontWeight: 'bold', color: '#FFFFFF' }}>第 3 周起 · 开发</Text>
+      <Text style={{ fontSize: 18, color: '#FFFFFF', lineHeight: 1.6 }}>用分支 + PR 并行写代码，组长审核合并。</Text>
+    </Box>
+  </Box>
+  <Box style={{ marginTop: 34, background: '#041133', borderRadius: 14, padding: '24px 30px', flexDirection: 'row', alignItems: 'center', gap: 20 }}>
+    <FAIcon name='users' style={{ fill: '#5DCAA5', width: 40, height: 40 }} />
+    <Box>
+      <Text style={{ fontSize: 22, fontWeight: 'bold', color: '#FFFFFF' }}>组长的节奏</Text>
+      <Text style={{ fontSize: 18, color: '#E7E8E9', lineHeight: 1.6, marginTop: 4 }}>
+        每周一次 30 分钟集合：你演示一步，大家跟做一步。谁卡住就当场解决，别让人掉队。
+      </Text>
+    </Box>
+  </Box>
+</Slide>

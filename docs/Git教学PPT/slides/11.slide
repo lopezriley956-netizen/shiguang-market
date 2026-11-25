@@ -1,0 +1,37 @@
+<Slide style={{ width: '1280px', height: '720px', background: '#0B1521', padding: '60px' }}>
+  <Box style={{ marginBottom: 24 }}>
+    <Text style={{ fontSize: 34, fontWeight: 'bold', color: '#FFFFFF' }}>收工三连：改动上传</Text>
+    <Box style={{ width: 64, height: 3, background: '#63A7D4', marginTop: 14 }} />
+  </Box>
+  <Box style={{ background: '#041133', borderRadius: 16, padding: 26, border: '1px solid #232C37', marginBottom: 24 }}>
+    <CodeBlock
+      code={`git add .
+git commit -m "新增商品详情页"
+git push`}
+      language='bash'
+      width={1096}
+      fontSize={20}
+      theme='github-dark'
+    />
+  </Box>
+  <Box style={{ height: 240, flexDirection: 'row', gap: 24 }}>
+    <Box style={{ flex: 1, background: '#13263B', borderRadius: 12, padding: 20, gap: 12 }}>
+      <Text style={{ fontSize: 24, fontWeight: 'bold', color: '#63A7D4' }}>① git add .</Text>
+      <Text style={{ fontSize: 18, color: '#E7E8E9', lineHeight: 1.6 }}>把改动打包。那个点「.」表示全部改动都要。</Text>
+    </Box>
+    <Box style={{ flex: 1, background: '#13263B', borderRadius: 12, padding: 20, gap: 12 }}>
+      <Text style={{ fontSize: 24, fontWeight: 'bold', color: '#63A7D4' }}>② git commit</Text>
+      <Text style={{ fontSize: 18, color: '#E7E8E9', lineHeight: 1.6 }}>给这包改动贴标签存档，引号里写人话说明。</Text>
+    </Box>
+    <Box style={{ flex: 1, background: '#3A5CBC', borderRadius: 12, padding: 20, gap: 12 }}>
+      <Text style={{ fontSize: 24, fontWeight: 'bold', color: '#FFFFFF' }}>③ git push</Text>
+      <Text style={{ fontSize: 18, color: '#FFFFFF', lineHeight: 1.6 }}>上传到网盘，队友刷新就能看到你的活。</Text>
+    </Box>
+  </Box>
+  <Box style={{ marginTop: 22, flexDirection: 'row', alignItems: 'center', gap: 14, background: '#232C37', borderRadius: 10, padding: '14px 20px' }}>
+    <FAIcon name='lightbulb' style={{ fill: '#5DCAA5', width: 22, height: 22 }} />
+    <Text style={{ fontSize: 18, color: '#E7E8E9', lineHeight: 1.5 }}>
+      commit 说明写「新增商品详情页」这种人话，别写 <span style={{ color: '#F09595' }}>update</span>、<span style={{ color: '#F09595' }}>123</span> 这种看不懂的。
+    </Text>
+  </Box>
+</Slide>

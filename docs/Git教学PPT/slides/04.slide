@@ -1,0 +1,52 @@
+<Slide style={{ width: '1280px', height: '720px', background: '#0B1521', padding: '60px' }}>
+  <Box style={{ marginBottom: 24 }}>
+    <Text style={{ fontSize: 18, color: '#63A7D4', letterSpacing: 2, fontWeight: 'bold' }}>先看全流程</Text>
+    <Text style={{ fontSize: 34, fontWeight: 'bold', color: '#FFFFFF', marginTop: 8 }}>三分钟看懂一次协作</Text>
+    <Box style={{ width: 64, height: 3, background: '#63A7D4', marginTop: 14 }} />
+  </Box>
+  <Box style={{ height: 330, flexDirection: 'row', alignItems: 'stretch', gap: 0 }}>
+    <Box style={{ flex: 1, background: '#232C37', borderRadius: 12, padding: 20, gap: 14, justifyContent: 'center' }}>
+      <FAIcon name='download' style={{ fill: '#63A7D4', width: 40, height: 40 }} />
+      <Text style={{ fontSize: 26, fontWeight: 'bold', color: '#FFFFFF' }}>① pull</Text>
+      <Text style={{ fontSize: 17, color: '#E7E8E9', lineHeight: 1.5 }}>开工先下载<br />队友的最新改动</Text>
+    </Box>
+    <Box style={{ width: 36, justifyContent: 'center', alignItems: 'center' }}>
+      <FAIcon name='chevron-right' style={{ fill: '#4DA3FF', width: 28, height: 28 }} />
+    </Box>
+    <Box style={{ flex: 1, background: '#232C37', borderRadius: 12, padding: 20, gap: 14, justifyContent: 'center' }}>
+      <FAIcon name='edit' style={{ fill: '#63A7D4', width: 40, height: 40 }} />
+      <Text style={{ fontSize: 26, fontWeight: 'bold', color: '#FFFFFF' }}>② 改文件</Text>
+      <Text style={{ fontSize: 17, color: '#E7E8E9', lineHeight: 1.5 }}>只改自己<br />负责的文件</Text>
+    </Box>
+    <Box style={{ width: 36, justifyContent: 'center', alignItems: 'center' }}>
+      <FAIcon name='chevron-right' style={{ fill: '#4DA3FF', width: 28, height: 28 }} />
+    </Box>
+    <Box style={{ flex: 1, background: '#232C37', borderRadius: 12, padding: 20, gap: 14, justifyContent: 'center' }}>
+      <FAIcon name='plus' style={{ fill: '#63A7D4', width: 40, height: 40 }} />
+      <Text style={{ fontSize: 26, fontWeight: 'bold', color: '#FFFFFF' }}>③ add .</Text>
+      <Text style={{ fontSize: 17, color: '#E7E8E9', lineHeight: 1.5 }}>把改动<br />打包</Text>
+    </Box>
+    <Box style={{ width: 36, justifyContent: 'center', alignItems: 'center' }}>
+      <FAIcon name='chevron-right' style={{ fill: '#4DA3FF', width: 28, height: 28 }} />
+    </Box>
+    <Box style={{ flex: 1, background: '#232C37', borderRadius: 12, padding: 20, gap: 14, justifyContent: 'center' }}>
+      <FAIcon name='clipboard' style={{ fill: '#63A7D4', width: 40, height: 40 }} />
+      <Text style={{ fontSize: 26, fontWeight: 'bold', color: '#FFFFFF' }}>④ commit</Text>
+      <Text style={{ fontSize: 17, color: '#E7E8E9', lineHeight: 1.5 }}>贴标签<br />存档</Text>
+    </Box>
+    <Box style={{ width: 36, justifyContent: 'center', alignItems: 'center' }}>
+      <FAIcon name='chevron-right' style={{ fill: '#4DA3FF', width: 28, height: 28 }} />
+    </Box>
+    <Box style={{ flex: 1, background: '#3A5CBC', borderRadius: 12, padding: 20, gap: 14, justifyContent: 'center' }}>
+      <FAIcon name='upload' style={{ fill: '#FFFFFF', width: 40, height: 40 }} />
+      <Text style={{ fontSize: 26, fontWeight: 'bold', color: '#FFFFFF' }}>⑤ push</Text>
+      <Text style={{ fontSize: 17, color: '#FFFFFF', lineHeight: 1.5 }}>上传到网盘<br />队友就能看到</Text>
+    </Box>
+  </Box>
+  <Box style={{ marginTop: 30, background: '#13263B', borderRadius: 12, padding: '20px 28px', flexDirection: 'row', alignItems: 'center', gap: 18 }}>
+    <FAIcon name='lightbulb' style={{ fill: '#5DCAA5', width: 30, height: 30 }} />
+    <Text style={{ fontSize: 20, color: '#E7E8E9', lineHeight: 1.5 }}>
+      <span style={{ fontWeight: 'bold', color: '#5DCAA5' }}>记住两条纪律：</span>开工先 pull，收工要 push。做到这两条，团队就不会乱。
+    </Text>
+  </Box>
+</Slide>

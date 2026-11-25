@@ -1,0 +1,42 @@
+<Slide style={{ width: '1280px', height: '720px', background: '#0B1521', padding: '60px' }}>
+  <Box style={{ height: '100%', flexDirection: 'row', gap: 60 }}>
+    <Box style={{ width: 380, justifyContent: 'center' }}>
+      <Text style={{ fontSize: 58, fontWeight: 'bold', color: '#FFFFFF', lineHeight: 1.15 }}>今天<br />学什么</Text>
+      <Text style={{ fontSize: 18, color: '#63A7D4', letterSpacing: 4, marginTop: 20 }}>CONTENTS</Text>
+      <Box style={{ width: 56, height: 4, background: '#63A7D4', marginTop: 28 }} />
+      <Text style={{ fontSize: 17, color: '#C9CCCE', marginTop: 28, lineHeight: 1.6 }}>
+        四步走完，从零开始<br />把项目跑起来
+      </Text>
+    </Box>
+    <Box style={{ flex: 1, justifyContent: 'center', gap: 0 }}>
+      <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 24, padding: '22px 0', borderBottom: '1px solid #232C37' }}>
+        <Text style={{ fontSize: 30, fontWeight: 'bold', color: '#63A7D4', width: 60 }}>01</Text>
+        <Box style={{ flex: 1 }}>
+          <Text style={{ fontSize: 26, color: '#FFFFFF', fontWeight: 'bold' }}>认识 Git</Text>
+          <Text style={{ fontSize: 16, color: '#8FBCE4', marginTop: 6 }}>它到底是什么，为什么要用</Text>
+        </Box>
+      </Box>
+      <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 24, padding: '22px 0', borderBottom: '1px solid #232C37' }}>
+        <Text style={{ fontSize: 30, fontWeight: 'bold', color: '#63A7D4', width: 60 }}>02</Text>
+        <Box style={{ flex: 1 }}>
+          <Text style={{ fontSize: 26, color: '#FFFFFF', fontWeight: 'bold' }}>安装与配置</Text>
+          <Text style={{ fontSize: 16, color: '#8FBCE4', marginTop: 6 }}>装软件、认身份、下载项目</Text>
+        </Box>
+      </Box>
+      <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 24, padding: '22px 0', borderBottom: '1px solid #232C37' }}>
+        <Text style={{ fontSize: 30, fontWeight: 'bold', color: '#63A7D4', width: 60 }}>03</Text>
+        <Box style={{ flex: 1 }}>
+          <Text style={{ fontSize: 26, color: '#FFFFFF', fontWeight: 'bold' }}>每天怎么用</Text>
+          <Text style={{ fontSize: 16, color: '#8FBCE4', marginTop: 6 }}>开工 pull，收工三连</Text>
+        </Box>
+      </Box>
+      <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 24, padding: '22px 0', borderBottom: '1px solid #232C37' }}>
+        <Text style={{ fontSize: 30, fontWeight: 'bold', color: '#63A7D4', width: 60 }}>04</Text>
+        <Box style={{ flex: 1 }}>
+          <Text style={{ fontSize: 26, color: '#FFFFFF', fontWeight: 'bold' }}>协作与排错</Text>
+          <Text style={{ fontSize: 16, color: '#8FBCE4', marginTop: 6 }}>分工、报错、三周路线</Text>
+        </Box>
+      </Box>
+    </Box>
+  </Box>
+</Slide>

@@ -1,0 +1,11 @@
+<Slide style={{ width: '1280px', height: '720px', background: '#041133', padding: '60px', justifyContent: 'center', alignItems: 'center', position: 'relative', overflow: 'hidden' }}>
+  <Box style={{ position: 'absolute', left: 90, top: 150, width: 260, height: 260, borderRadius: 130, background: '#3A5CBC', opacity: 0.18 }} />
+  <Text style={{ position: 'absolute', right: 90, top: 120, fontSize: 260, fontWeight: 'bold', color: '#0F1920', lineHeight: 1 }}>01</Text>
+  <Box style={{ position: 'relative', zIndex: 1, flexDirection: 'column', alignItems: 'center', gap: 22 }}>
+    <Box style={{ width: 60, height: 5, background: '#63A7D4' }} />
+    <Text style={{ fontSize: 64, fontWeight: 'bold', color: '#FFFFFF', letterSpacing: 4 }}>安装与配置</Text>
+    <Text style={{ fontSize: 20, color: '#A9CFE7', lineHeight: 1.6, textAlign: 'center' }}>
+      装软件、认身份、把项目下载到电脑<br />这三步做完，工具就准备好了
+    </Text>
+  </Box>
+</Slide>

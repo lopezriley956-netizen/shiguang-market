@@ -1,6 +1,6 @@
 # 拾光集市 · 零基础 Git 协作手册
 
-> 写给第一次接触 Git 的同学。全程照着做即可，不需要提前懂代码。
+> 写给第一次接触 Git 的同学。全程照着做即可，不需要提前懂代码。  
 > 遇到看不懂的英文不用慌，只要照着敲命令、看结果对不对就行。
 
 ---
@@ -21,12 +21,12 @@
 
 ### 1. 安装 Git
 
-- Windows：去 https://git-scm.com/download/win 下载，一路点「Next」装完。
+- Windows：去 <https://git-scm.com/download/win> 下载，一路点「Next」装完。
 - 装完后在桌面或任意文件夹点右键，能看到 **Git Bash Here** 就成功了。
 
 ### 2. 安装代码编辑器
 
-推荐 VS Code：https://code.visualstudio.com/ ，一路下一步。
+推荐 VS Code：<https://code.visualstudio.com/> ，一路下一步。
 
 ### 3. 告诉 Git 你是谁（只做一次）
 
@@ -74,13 +74,14 @@ git push
 
 三行的意思：
 
-| 命令 | 通俗解释 |
-|---|---|
-| `git add .` | 把改动「打包」（`.` 表示全部改动） |
+| 命令                    | 通俗解释                  |
+| --------------------- | --------------------- |
+| `git add .`           | 把改动「打包」（`.` 表示全部改动）   |
 | `git commit -m "..."` | 给这包改动「贴标签存档」，引号里写人话说明 |
-| `git push` | 把存档上传到网盘 |
+| `git push`            | 把存档上传到网盘              |
 
 **commit 说明要写清楚**，例如：
+
 - ✅ `新增商品详情页`
 - ✅ `修复登录按钮点不动的问题`
 - ❌ `update`、`123`、`aaa`
@@ -115,10 +116,10 @@ git push
 
 **规则：一个人只改自己负责的文件，绝不碰别人的。**
 
-| 分工 | 负责文件 |
-|---|---|
-| 同学 A | `frontend/src/views/HomeView.vue` |
-| 同学 B | `frontend/src/views/LoginView.vue` |
+| 分工   | 负责文件                                               |
+| ---- | -------------------------------------------------- |
+| 同学 A | `frontend/src/views/HomeView.vue`                  |
+| 同学 B | `frontend/src/views/LoginView.vue`                 |
 | 同学 C | `backend/src/modules/products/products.service.ts` |
 
 因为各改各的文件，所以不会冲突。每人重复「开工 pull → 改文件 → 上传三连」。
@@ -128,12 +129,15 @@ git push
 ## 六、常见报错怎么办（不要慌）
 
 ### 报错 1：`Please tell me who you are`
+
 原因：没做第二节第 3 步。补做那两行 `git config` 命令，再重新 commit。
 
 ### 报错 2：`Updates were rejected because the remote contains work...` 或 `! [rejected]`
+
 原因：你没先 `git pull` 就 `git push`，网盘上有你没有的新内容。
 
 解决：
+
 ```bash
 git pull
 # 如果弹出一个编辑器界面，不用改，直接输入 :q 回车退出
@@ -141,9 +145,11 @@ git push
 ```
 
 ### 报错 3：文件出现 `<<<<<<< HEAD` 这样的符号
+
 原因：两个人改了同一个文件的同一行，Git 不知道听谁的，这叫「冲突」。
 
 解决：
+
 1. 用 VS Code 打开这个文件，会看到一段 `<<<<<<<`、一段 `=======`、一段 `>>>>>>>`
 2. 找组长当面确认保留哪一段，把另外的符号和内容删掉
 3. 然后正常执行上传三连
@@ -151,10 +157,12 @@ git push
 > 预防胜于治疗：只改自己负责的文件，开工先 pull。
 
 ### 报错 4：密码输不对
-GitHub 已经**不能再用账号密码**了，要用「Personal Access Token」（个人访问令牌）。
+
+GitHub 已经**不能再用账号密码**了，要用「Personal Access Token」（个人访问令牌）。  
 找组长要 token，在提示输密码时粘贴 token（粘贴时屏幕不显示是正常的，直接回车）。
 
 ### 报错 5：命令打错 / 不知道自己在哪
+
 ```bash
 pwd          # 看现在在哪个文件夹
 ls           # 看这个文件夹里有什么
@@ -179,7 +187,7 @@ git commit -m "完成 xxx 功能"
 git push -u origin feature/你的功能名
 ```
 
-然后去 GitHub 网页点 **Pull request** → **New pull request** → 选你的分支 → 填说明 → 创建。
+然后去 GitHub 网页点 **Pull request** → **New pull request** → 选你的分支 → 填说明 → 创建。  
 组长在网页上点 **Merge pull request** 合并。这样主干永远是可用的版本。
 
 ---

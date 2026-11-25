@@ -1,0 +1,54 @@
+<Slide style={{ width: '1280px', height: '720px', background: '#0B1521', padding: '60px' }}>
+  <Box style={{ marginBottom: 24 }}>
+    <Text style={{ fontSize: 34, fontWeight: 'bold', color: '#FFFFFF' }}>第一周练习：签到接龙</Text>
+    <Box style={{ width: 64, height: 3, background: '#63A7D4', marginTop: 14 }} />
+    <Text style={{ fontSize: 18, color: '#A9CFE7', marginTop: 12 }}>不写代码，先把完整流程走一遍</Text>
+  </Box>
+  <Box style={{ height: 340, flexDirection: 'row', gap: 20 }}>
+    <Box style={{ flex: 1, background: '#13263B', borderRadius: 12, padding: 22, gap: 14 }}>
+      <Box style={{ width: 44, height: 44, borderRadius: 10, background: '#24428F', justifyContent: 'center', alignItems: 'center' }}>
+        <Text style={{ fontSize: 22, fontWeight: 'bold', color: '#FFFFFF' }}>1</Text>
+      </Box>
+      <Text style={{ fontSize: 21, fontWeight: 'bold', color: '#FFFFFF' }}>先 pull</Text>
+      <Text style={{ fontSize: 17, color: '#E7E8E9', lineHeight: 1.6 }}>同步最新内容，别在旧版本上改。</Text>
+    </Box>
+    <Box style={{ flex: 1, background: '#13263B', borderRadius: 12, padding: 22, gap: 14 }}>
+      <Box style={{ width: 44, height: 44, borderRadius: 10, background: '#24428F', justifyContent: 'center', alignItems: 'center' }}>
+        <Text style={{ fontSize: 22, fontWeight: 'bold', color: '#FFFFFF' }}>2</Text>
+      </Box>
+      <Text style={{ fontSize: 21, fontWeight: 'bold', color: '#FFFFFF' }}>打开文件</Text>
+      <Text style={{ fontSize: 17, color: '#E7E8E9', lineHeight: 1.6 }}>用 VS Code 打开 docs/签到.md。</Text>
+    </Box>
+    <Box style={{ flex: 1, background: '#13263B', borderRadius: 12, padding: 22, gap: 14 }}>
+      <Box style={{ width: 44, height: 44, borderRadius: 10, background: '#24428F', justifyContent: 'center', alignItems: 'center' }}>
+        <Text style={{ fontSize: 22, fontWeight: 'bold', color: '#FFFFFF' }}>3</Text>
+      </Box>
+      <Text style={{ fontSize: 21, fontWeight: 'bold', color: '#FFFFFF' }}>加一行</Text>
+      <Text style={{ fontSize: 17, color: '#E7E8E9', lineHeight: 1.6 }}>末尾写：名字 - 日期 - 一句话感想。</Text>
+    </Box>
+    <Box style={{ flex: 1, background: '#13263B', borderRadius: 12, padding: 22, gap: 14 }}>
+      <Box style={{ width: 44, height: 44, borderRadius: 10, background: '#24428F', justifyContent: 'center', alignItems: 'center' }}>
+        <Text style={{ fontSize: 22, fontWeight: 'bold', color: '#FFFFFF' }}>4</Text>
+      </Box>
+      <Text style={{ fontSize: 21, fontWeight: 'bold', color: '#FFFFFF' }}>保存文件</Text>
+      <Text style={{ fontSize: 17, color: '#E7E8E9', lineHeight: 1.6 }}>Ctrl + S，别忘了这一步。</Text>
+    </Box>
+  </Box>
+  <Box style={{ marginTop: 20, flexDirection: 'row', gap: 20 }}>
+    <Box style={{ flex: 1, background: '#13263B', borderRadius: 12, padding: 22, gap: 14, flexDirection: 'row', alignItems: 'center' }}>
+      <Box style={{ width: 44, height: 44, borderRadius: 10, background: '#24428F', justifyContent: 'center', alignItems: 'center', flexShrink: 0 }}>
+        <Text style={{ fontSize: 22, fontWeight: 'bold', color: '#FFFFFF' }}>5</Text>
+      </Box>
+      <Text style={{ fontSize: 18, color: '#E7E8E9', lineHeight: 1.6 }}>上传三连：add . → commit → push</Text>
+    </Box>
+    <Box style={{ flex: 1, background: '#13263B', borderRadius: 12, padding: 22, gap: 14, flexDirection: 'row', alignItems: 'center' }}>
+      <Box style={{ width: 44, height: 44, borderRadius: 10, background: '#24428F', justifyContent: 'center', alignItems: 'center', flexShrink: 0 }}>
+        <Text style={{ fontSize: 22, fontWeight: 'bold', color: '#FFFFFF' }}>6</Text>
+      </Box>
+      <Text style={{ fontSize: 18, color: '#E7E8E9', lineHeight: 1.6 }}>去网页刷新，看到你的名字 = 成功</Text>
+    </Box>
+  </Box>
+  <Box style={{ marginTop: 20, background: '#3A5CBC', borderRadius: 10, padding: '14px 22px' }}>
+    <Text style={{ fontSize: 19, color: '#FFFFFF', fontWeight: 'bold' }}>完成标准：全组每个人的名字都出现在签到文件里</Text>
+  </Box>
+</Slide>

@@ -1,0 +1,45 @@
+<Slide style={{ width: '1280px', height: '720px', background: '#0B1521', padding: '60px' }}>
+  <Box style={{ marginBottom: 26 }}>
+    <Text style={{ fontSize: 34, fontWeight: 'bold', color: '#FFFFFF' }}>开工第一件事：pull</Text>
+    <Box style={{ width: 64, height: 3, background: '#63A7D4', marginTop: 14 }} />
+  </Box>
+  <Box style={{ height: 440, flexDirection: 'row', gap: 0 }}>
+    <Box style={{ flex: 1, background: '#232C37', borderRadius: 16, padding: 30, gap: 20, justifyContent: 'center' }}>
+      <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 14 }}>
+        <FAIcon name='times-circle' style={{ fill: '#F09595', width: 36, height: 36 }} />
+        <Text style={{ fontSize: 26, fontWeight: 'bold', color: '#F09595' }}>不做会怎样</Text>
+      </Box>
+      <Text style={{ fontSize: 19, color: '#E7E8E9', lineHeight: 1.7 }}>
+        队友昨晚改了东西，你电脑还是旧版本。你在旧版本上改完上传，Git 不知道该听谁的 → 报错、冲突。
+      </Text>
+      <Box style={{ background: '#0B1521', borderRadius: 10, padding: 16 }}>
+        <Text style={{ fontSize: 17, color: '#C9CCCE', lineHeight: 1.6 }}>
+          报错长这样：<span style={{ color: '#F09595' }}>Updates were rejected...</span>
+        </Text>
+      </Box>
+    </Box>
+    <Box style={{ width: 60, justifyContent: 'center', alignItems: 'center' }}>
+      <Box style={{ width: 46, height: 46, borderRadius: 23, background: '#3A5CBC', justifyContent: 'center', alignItems: 'center' }}>
+        <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#FFFFFF' }}>VS</Text>
+      </Box>
+    </Box>
+    <Box style={{ flex: 1, background: '#13263B', borderRadius: 16, padding: 30, gap: 20, justifyContent: 'center' }}>
+      <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 14 }}>
+        <FAIcon name='check-circle' style={{ fill: '#5DCAA5', width: 36, height: 36 }} />
+        <Text style={{ fontSize: 26, fontWeight: 'bold', color: '#5DCAA5' }}>做了会怎样</Text>
+      </Box>
+      <Text style={{ fontSize: 19, color: '#E7E8E9', lineHeight: 1.7 }}>
+        你总是从最新版本开始改，上传顺顺利利，队友也不会被你覆盖。
+      </Text>
+      <Box style={{ background: '#0B1521', borderRadius: 10, padding: 16 }}>
+        <Text style={{ fontSize: 17, color: '#C9CCCE', lineHeight: 1.6 }}>
+          看到 <span style={{ color: '#5DCAA5' }}>Already up to date</span> 就对了
+        </Text>
+      </Box>
+    </Box>
+  </Box>
+  <Box style={{ marginTop: 24, background: '#041133', borderRadius: 10, padding: '14px 22px', flexDirection: 'row', alignItems: 'center', gap: 14 }}>
+    <FAIcon name='terminal' style={{ fill: '#63A7D4', width: 22, height: 22 }} />
+    <Text style={{ fontSize: 19, color: '#FFFFFF', fontWeight: 'bold' }}>命令：cd shiguang-market　然后　git pull</Text>
+  </Box>
+</Slide>
