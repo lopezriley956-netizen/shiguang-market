@@ -65,6 +65,7 @@ const sellers: User[] = [
   { ...demoUser, id: 4, nickname: '早八战士', creditScore: 745, verified: true },
   { ...demoUser, id: 5, nickname: '图书馆常驻', creditScore: 690, verified: false },
   { ...demoUser, id: 6, nickname: '考研上岸啦', creditScore: 856, verified: true },
+  { ...demoUser, id: 7, nickname: '毕业季清仓', creditScore: 730, verified: true },
 ];
 
 const categories: Category[] = [
@@ -97,7 +98,7 @@ const makeProduct = (s: Seed): Product => {
   const [id, title, description, categoryId, condition, dealType, price, originPrice, sellerIdx, emoji] = s;
   return {
     id,
-    sellerId: sellers[sellerIdx].id,
+    sellerId: (sellers[sellerIdx] ?? sellers[0]).id,
     categoryId,
     title,
     description,
@@ -114,7 +115,7 @@ const makeProduct = (s: Seed): Product => {
       { id: id * 10 + 1, url: svgCover(title.slice(0, 8), emoji, (id * 47) % 360), sortOrder: 0 },
       { id: id * 10 + 2, url: svgCover('实拍细节', emoji, (id * 47 + 40) % 360), sortOrder: 1 },
     ],
-    seller: sellers[sellerIdx],
+    seller: sellers[sellerIdx] ?? sellers[0],
     category: categories.find((c) => c.id === categoryId),
     createdAt: iso(id),
   };
@@ -184,6 +185,111 @@ let pendingVerifications: any[] = [
 const delay = <T>(data: T): Promise<T> => Promise.resolve(JSON.parse(JSON.stringify(data)));
 const pageResult = (items: Product[]): PageResult<Product> => ({ items, total: items.length, page: 1, pageSize: 24 });
 
+// ============================================================
+// 真实云服务：分类 / 商品 / 审核走云端 PostgreSQL。
+// 云端不可用时给出可见提示并回退到内置示例数据，绝不静默假装成功。
+// ============================================================
+import { cloud } from './cloud';
+
+// 同一客户端的无类型视图：本项目未生成 schema 泛型，写操作需要绕过 never 推断。
+const db: any = cloud.database;
+
+let cloudWarned = false;
+const cloudWarn = (err: unknown): void => {
+  const message =
+    err instanceof Error ? err.message : (err as { message?: string })?.message || String(err);
+  console.warn('[拾光集市] 云服务请求失败，已使用内置示例数据：', message);
+  if (cloudWarned) return;
+  cloudWarned = true;
+  try {
+    const bar = document.createElement('div');
+    bar.setAttribute(
+      'style',
+      'position:fixed;z-index:99998;left:12px;right:12px;bottom:12px;padding:12px 16px;' +
+        'border-radius:10px;background:#fffbe6;color:#874d00;border:1px solid #ffe58f;' +
+        'font:13px/1.6 sans-serif;box-shadow:0 6px 20px rgba(0,0,0,.1)',
+    );
+    bar.textContent = `云端数据暂不可用，当前显示内置示例数据（${message}）。刷新页面可重试。`;
+    document.body.appendChild(bar);
+  } catch {
+    /* 无 DOM 的环境忽略 */
+  }
+};
+
+let cloudCategories: Category[] = [];
+const loadCategories = async (): Promise<Category[]> => {
+  const { data, error } = await db
+    .from('categories')
+    .select('*')
+    .order('sort_order', { ascending: true });
+  if (error) throw error;
+  cloudCategories = ((data || []) as any[]).map((r) => ({
+    id: Number(r.id),
+    name: String(r.name),
+    icon: String(r.icon || ''),
+    sortOrder: Number(r.sort_order || 0),
+  }));
+  return cloudCategories;
+};
+
+const sellerFromRow = (r: any): User => ({
+  id: Number(r.seller_id ?? 2),
+  phone: '',
+  nickname: String(r.seller_name || '拾光同学'),
+  creditScore: Number(r.seller_credit ?? 700),
+  balance: 0,
+  escrowBalance: 0,
+  role: 'user',
+  verified: true,
+});
+
+const rowToProduct = (r: any): Product => {
+  const imgs: Array<{ e?: string; h?: number }> = Array.isArray(r.images) ? r.images : [];
+  const emoji = imgs[0]?.e || '📦';
+  const hue = Number(imgs[0]?.h ?? 200);
+  const catId = Number(r.category_id ?? 0);
+  const title = String(r.title || '闲置好物');
+  return {
+    id: Number(r.id),
+    sellerId: Number(r.seller_id ?? 2),
+    categoryId: catId,
+    title,
+    description: String(r.description || ''),
+    condition: String(r.item_condition || '几乎全新'),
+    dealType: String(r.deal_type || '均可'),
+    location: String(r.location || '拾光大学'),
+    price: Number(r.price),
+    originPrice: r.origin_price == null ? undefined : Number(r.origin_price),
+    bargain: Boolean(r.bargain),
+    status: String(r.status || 'approved'),
+    viewCount: Number(r.views ?? 0),
+    wantCount: Number(r.favorites ?? 0),
+    images: [
+      { id: Number(r.id) * 10 + 1, url: svgCover(title.slice(0, 8), emoji, hue), sortOrder: 0 },
+      { id: Number(r.id) * 10 + 2, url: svgCover('实拍细节', emoji, (hue + 40) % 360), sortOrder: 1 },
+    ],
+    seller: sellerFromRow(r),
+    category: (cloudCategories.length ? cloudCategories : categories).find((c) => c.id === catId),
+    createdAt: r.created_at,
+  };
+};
+
+const localList = (params: any = {}): PageResult<Product> => {
+  let items = products.filter((p) => p.status === (params.status || 'approved'));
+  if (params.categoryId) items = items.filter((p) => p.categoryId === params.categoryId);
+  if (params.keyword) {
+    const kw = String(params.keyword).toLowerCase();
+    items = items.filter((p) => p.title.toLowerCase().includes(kw) || p.description?.toLowerCase().includes(kw));
+  }
+  if (params.sort === 'priceAsc') items = [...items].sort((a, b) => a.price - b.price);
+  else if (params.sort === 'priceDesc') items = [...items].sort((a, b) => b.price - a.price);
+  else items = [...items].sort((a, b) => b.id - a.id);
+  return pageResult(items);
+};
+
+const safeKeyword = (value: unknown): string =>
+  String(value ?? '').replace(/[(),%'\\]/g, '').trim();
+
 export const api = {
   auth: {
     register: (data: { phone: string; password: string; nickname: string }) => {
@@ -216,7 +322,14 @@ export const api = {
     publicProfile: (id: number) => delay(sellers.find((u) => u.id === id) || demoUser),
   },
   categories: {
-    list: () => delay(categories),
+    list: async () => {
+      try {
+        return await loadCategories();
+      } catch (err) {
+        cloudWarn(err);
+        return delay(categories);
+      }
+    },
     create: (data: any) => {
       const c = { id: categories.length + 1, sortOrder: 99, ...data } as Category;
       categories.push(c);
@@ -224,60 +337,140 @@ export const api = {
     },
   },
   products: {
-    list: (params: any = {}) => {
-      let items = products.filter((p) => p.status === (params.status || 'approved'));
-      if (params.categoryId) items = items.filter((p) => p.categoryId === params.categoryId);
-      if (params.keyword) {
-        const kw = String(params.keyword).toLowerCase();
-        items = items.filter((p) => p.title.toLowerCase().includes(kw) || p.description?.toLowerCase().includes(kw));
+    list: async (params: any = {}) => {
+      try {
+        if (!cloudCategories.length) await loadCategories();
+        let q = db
+          .from('products')
+          .select('*', { count: 'exact' })
+          .eq('status', params.status || 'approved');
+        if (params.categoryId) q = q.eq('category_id', Number(params.categoryId));
+        const kw = safeKeyword(params.keyword);
+        if (kw) q = q.or(`title.ilike.%${kw}%,description.ilike.%${kw}%`);
+        if (params.sort === 'priceAsc') q = q.order('price', { ascending: true });
+        else if (params.sort === 'priceDesc') q = q.order('price', { ascending: false });
+        else q = q.order('id', { ascending: false });
+        const { data, error } = await q;
+        if (error) throw error;
+        return pageResult(((data || []) as any[]).map(rowToProduct));
+      } catch (err) {
+        cloudWarn(err);
+        return delay(localList(params));
       }
-      if (params.sort === 'priceAsc') items = [...items].sort((a, b) => a.price - b.price);
-      else if (params.sort === 'priceDesc') items = [...items].sort((a, b) => b.price - a.price);
-      else items = [...items].sort((a, b) => b.id - a.id);
-      return delay(pageResult(items));
     },
-    detail: (id: number) => {
+    detail: async (id: number) => {
+      try {
+        if (!cloudCategories.length) await loadCategories();
+        const { data, error } = await db
+          .from('products')
+          .select('*')
+          .eq('id', id)
+          .maybeSingle();
+        if (error) throw error;
+        if (data) return rowToProduct(data);
+      } catch (err) {
+        cloudWarn(err);
+      }
       const p = products.find((x) => x.id === id) || pendingProducts.find((x) => x.id === id);
       if (!p) return Promise.reject({ message: '商品不存在' });
       return delay(p);
     },
-    mine: () => delay(products.filter((p) => p.sellerId === demoUser.id)),
-    create: (data: any) => {
-      const id = Math.max(...products.map((p) => p.id)) + 1;
-      const p: Product = {
-        ...makeProduct([id, data.title, data.description, data.categoryId, data.condition, data.dealType, data.price, data.originPrice || 0, 0, '📦']),
-        ...data,
-        id,
-        sellerId: demoUser.id,
-        seller: demoUser,
-        category: categories.find((c) => c.id === data.categoryId),
-        status: 'pending',
-        images: (data.images || []).map((url: string, i: number) => ({ id: id * 10 + i, url, sortOrder: i })),
-      };
-      pendingProducts.unshift(p);
-      return delay(p);
+    mine: async () => {
+      try {
+        const { data, error } = await db
+          .from('products')
+          .select('*')
+          .eq('seller_id', currentUser.id)
+          .order('id', { ascending: false });
+        if (error) throw error;
+        return ((data || []) as any[]).map(rowToProduct);
+      } catch (err) {
+        cloudWarn(err);
+        return delay(products.filter((p) => p.sellerId === demoUser.id));
+      }
     },
-    update: (id: number, data: any) => {
-      const p = products.find((x) => x.id === id);
-      if (p) Object.assign(p, data);
-      return delay(p);
+    create: async (data: any) => {
+      const row = {
+        title: String(data.title || '').trim(),
+        description: String(data.description || ''),
+        category_id: Number(data.categoryId) || null,
+        price: Number(data.price),
+        origin_price: data.originPrice ? Number(data.originPrice) : null,
+        item_condition: String(data.condition || '几乎全新'),
+        deal_type: String(data.dealType || '均可'),
+        location: String(data.location || '拾光大学'),
+        seller_name: currentUser.nickname,
+        seller_credit: currentUser.creditScore,
+        seller_id: currentUser.id,
+        images: [{ e: '📦', h: 210 }],
+        status: 'pending',
+        views: 0,
+        favorites: 0,
+        bargain: data.bargain !== false,
+      };
+      const { data: created, error } = await db.from('products').insert(row).select();
+      if (error) throw new Error(error.message || '发布失败，请稍后重试');
+      const rows = (created || []) as any[];
+      if (!rows.length) throw new Error('发布未生效：没有写入权限，请刷新后重试');
+      const p = rowToProduct(rows[0]);
+      pendingProducts.unshift(p);
+      return p;
+    },
+    update: async (id: number, data: any) => {
+      const patch: Record<string, unknown> = {};
+      if (data.title != null) patch.title = String(data.title);
+      if (data.price != null) patch.price = Number(data.price);
+      if (data.description != null) patch.description = String(data.description);
+      const { data: updated, error } = await db
+        .from('products')
+        .update(patch)
+        .eq('id', id)
+        .select();
+      if (error) throw error;
+      const rows = (updated || []) as any[];
+      return delay(rows.length ? rowToProduct(rows[0]) : products.find((x) => x.id === id));
     },
     submit: (id: number) => delay({ id, status: 'pending' }),
-    offline: (id: number) => {
-      const p = products.find((x) => x.id === id);
-      if (p) p.status = 'offline';
+    offline: async (id: number) => {
+      const { data: updated, error } = await db
+        .from('products')
+        .update({ status: 'offline' })
+        .eq('id', id)
+        .select();
+      if (error) throw error;
+      const rows = (updated || []) as any[];
+      if (!rows.length) throw new Error('下架失败：没有权限或商品不存在');
       return delay({ id, status: 'offline' });
     },
   },
   audit: {
-    products: (status = 'pending') => delay(status === 'pending' ? pendingProducts : products.filter((p) => p.status === status)),
-    review: (id: number, data: { action: string; reason?: string }) => {
-      const idx = pendingProducts.findIndex((x) => x.id === id);
-      if (idx >= 0) {
-        const [p] = pendingProducts.splice(idx, 1);
-        if (data.action === 'approve') products.unshift({ ...p, status: 'approved' });
+    products: async (status = 'pending') => {
+      try {
+        const { data, error } = await db
+          .from('products')
+          .select('*')
+          .eq('status', status)
+          .order('id', { ascending: false });
+        if (error) throw error;
+        return ((data || []) as any[]).map(rowToProduct);
+      } catch (err) {
+        cloudWarn(err);
+        return delay(status === 'pending' ? pendingProducts : products.filter((p) => p.status === status));
       }
-      return delay({ id, status: data.action === 'approve' ? 'approved' : 'rejected' });
+    },
+    review: async (id: number, data: { action: string; reason?: string }) => {
+      const next = data.action === 'approve' ? 'approved' : 'rejected';
+      const { data: updated, error } = await db
+        .from('products')
+        .update({ status: next })
+        .eq('id', id)
+        .select();
+      if (error) throw new Error(error.message || '审核失败，请稍后重试');
+      const rows = (updated || []) as any[];
+      if (!rows.length) throw new Error('审核未生效：没有权限或商品不存在');
+      const idx = pendingProducts.findIndex((x) => x.id === id);
+      if (idx >= 0) pendingProducts.splice(idx, 1);
+      return delay({ id, status: next });
     },
   },
   orders: {
